@@ -59,6 +59,10 @@ spring.datasource.username=root
 spring.datasource.password=Ashwani@12
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+
+
+
+##
 ✅ Future Improvements
 Email notifications for dues updates
 
