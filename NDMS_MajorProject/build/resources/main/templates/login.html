@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Login | NDMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #1e2a45, #0a1b32);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 3rem;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #002b80, #001740);
+            color: #f1c40f;
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 0 0 25px 25px;
+            width: 100%;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            max-width: 420px;
+            width: 90%;
+            margin-top: 2rem;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f1c40f;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #ddd;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #888;
+            border-radius: 14px;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #f1c40f;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 45px;
+            cursor: pointer;
+            color: #f1c40f;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #f1c40f, #d4ac0d);
+            color: #000;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 18px rgba(241, 196, 15, 0.4);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #ffd700, #c79a00);
+            transform: translateY(-2px);
+        }
+
+        .switch {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 2rem;
+        }
+
+        .switch a {
+            color: #f1c40f;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .switch a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 480px) {
+            .header {
+                font-size: 22px;
+                padding: 1.5rem 0.5rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    RADHARAMAN GROUP OF INSTITUTE DUES MANAGEMENT
+</div>
+
+<div class="container">
+    <h2>Student Login</h2>
+
+    <div th:if="${error}" class="error" th:text="${error}">Invalid credentials</div>
+
+    <form th:action="@{/student/login}" method="post">
+        <div class="form-group">
+            <label for="rollNumber">Roll Number</label>
+            <input type="text" id="rollNumber" name="rollNumber" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+
+        <button class="btn" type="submit">Login</button>
+    </form>
+
+    <div class="switch">
+        <p>Login as <a th:href="@{/admin-login-page}">Admin</a></p>
+        <p>Don't have an account? <a th:href="@{/student/register-page}">Register</a></p>
+    </div>
+</div>
+
+<script>
+    function togglePassword() {
+        const pass = document.getElementById("password");
+        pass.type = pass.type === "password" ? "text" : "password";
+    }
+</script>
+
+</body>
+</html>

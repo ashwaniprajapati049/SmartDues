@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Receipt | NDMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+          background: linear-gradient(to right, #dfefff, #f7fbff);
+          font-family: 'Inter', sans-serif;
+          min-height: 100vh;
+        }
+
+        .header {
+          background: linear-gradient(135deg, #007bff, #004080);
+          color: white;
+          padding: 2.5rem 0;
+          text-align: center;
+          font-size: 30px;
+          font-weight: 700;
+          border-radius: 0 0 30px 30px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+        }
+
+        .form-container {
+          background: #ffffff;
+          padding: 3rem 2.5rem;
+          margin: 4rem auto;
+          border-radius: 24px;
+          max-width: 740px;
+          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+          transition: box-shadow 0.3s ease;
+        }
+
+        .form-container:hover {
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-floating label {
+          font-weight: 500;
+          color: #555;
+        }
+
+        .form-control, .form-select {
+          border-radius: 12px !important;
+          font-size: 15px;
+          padding-left: 1.2rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+          border-color: #007bff;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-submit {
+          background: linear-gradient(to right, #007bff, #0056b3);
+          color: white;
+          font-weight: 600;
+          border: none;
+          padding: 0.85rem;
+          border-radius: 14px;
+          transition: background 0.3s ease, transform 0.2s ease;
+          font-size: 16px;
+          letter-spacing: 0.4px;
+        }
+
+        .btn-submit:hover {
+          background: linear-gradient(to right, #0056b3, #003d80);
+          transform: translateY(-2px);
+        }
+
+        .alert-success {
+          font-weight: 600;
+          border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">Upload Receipt Details</div>
+
+<div class="container">
+    <div class="form-container">
+
+        <!-- Success Message -->
+        <div th:if="${success}" class="alert alert-success text-center mb-4" th:text="${success}"></div>
+
+        <form th:action="@{/student/upload-receipt}" method="post" th:object="${receipt}">
+
+            <!-- Year -->
+            <div class="form-floating mb-3">
+                <select id="year" th:field="*{year}" class="form-select" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+                <label for="year">Select Year</label>
+            </div>
+
+            <!-- Semester -->
+            <div class="form-floating mb-3">
+                <select id="semester" th:field="*{semester}" class="form-select" required>
+                    <option value="" disabled selected hidden></option>
+                </select>
+                <label for="semester">Select Semester</label>
+            </div>
+
+            <!-- Amount -->
+            <div class="form-floating mb-3">
+                <input type="number" step="0.01" th:field="*{amount}" class="form-control" placeholder="Amount" required>
+                <label>Receipt Amount (₹)</label>
+            </div>
+
+            <!-- Receipt Number -->
+            <div class="form-floating mb-3">
+                <input type="text" th:field="*{receiptNumber}" class="form-control" placeholder="Receipt Number" required>
+                <label>Receipt Number</label>
+            </div>
+
+            <!-- Transaction ID -->
+            <div class="form-floating mb-3">
+                <input type="text" th:field="*{transactionId}" class="form-control" placeholder="Transaction ID" required>
+                <label>Transaction ID</label>
+            </div>
+
+            <!-- Receipt Date -->
+            <div class="form-floating mb-3">
+                <input type="date" th:field="*{receiptDate}" class="form-control" placeholder="Receipt Date" required>
+                <label>Receipt Date</label>
+            </div>
+
+            <!-- Yearly Commitment -->
+            <div class="form-floating mb-4">
+                <input type="number" step="0.01" th:field="*{yearlyCommitment}" class="form-control" placeholder="Yearly Fee" required>
+                <label>Yearly Fee as per Commitment (₹)</label>
+            </div>
+
+            <button type="submit" class="btn btn-submit w-100">Submit Receipt</button>
+        </form>
+    </div>
+</div>
+
+<!-- Dynamic Semester Script -->
+<script>
+    document.getElementById('year').addEventListener('change', function () {
+      const semesterSelect = document.getElementById('semester');
+      const year = this.value;
+      semesterSelect.innerHTML = '<option value="" disabled selected hidden></option>';
+
+      const semesterOptions = {
+        1: ['1st Semester', '2nd Semester'],
+        2: ['3rd Semester', '4th Semester'],
+        3: ['5th Semester', '6th Semester'],
+        4: ['7th Semester', '8th Semester']
+      };
+
+      if (semesterOptions[year]) {
+        semesterOptions[year].forEach((sem, idx) => {
+          const option = document.createElement('option');
+          option.value = (parseInt(year) - 1) * 2 + idx + 1;
+          option.text = sem;
+          semesterSelect.add(option);
+        });
+      }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

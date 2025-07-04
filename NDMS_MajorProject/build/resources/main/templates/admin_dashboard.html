@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | NDMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #001f3f, #004080);
+            color: #f1c40f;
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-box {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-box h4 {
+            font-weight: 700;
+            font-size: 26px;
+            color: #f1c40f;
+        }
+
+        .welcome-box p {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        .card {
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h5 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #ccc;
+        }
+
+        .btn {
+            border-radius: 30px;
+            font-weight: 600;
+            padding: 10px 22px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            border: none;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            border: none;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            border: none;
+        }
+
+        .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: #f1c40f;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-bottom: 2rem;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    RADHARAMAN GROUP OF INSTITUTE - ADMIN DASHBOARD
+</div>
+
+<div class="container mt-4">
+    <div class="welcome-box">
+        <h4>Welcome, Admin!</h4>
+        <p>Manage student dues and records efficiently.</p>
+    </div>
+
+    <div class="row justify-content-center g-4">
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <div class="icon"><i class="bi bi-people-fill"></i></div>
+                <h5>Manage Students</h5>
+                <p>View, edit or remove student records.</p>
+                <a href="/admin/students" class="btn btn-primary">Manage</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <div class="icon"><i class="bi bi-currency-rupee"></i></div>
+                <h5>Manage Dues</h5>
+                <p>Add, update or clear dues data.</p>
+                <a href="/admin/dues" class="btn btn-success">Manage</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center p-4">
+                <div class="icon"><i class="bi bi-box-arrow-right"></i></div>
+                <h5>Logout</h5>
+                <p>Sign out of admin dashboard.</p>
+                <a href="/" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    &copy; 2025 NDMS | Radharaman Group of Institution
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Profile | NDMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .avatar-circle {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+<div class="w-full max-w-2xl card p-8">
+  <!-- Header -->
+  <div class="flex flex-col items-center mb-8">
+    <div class="w-24 h-24 rounded-full avatar-circle text-white text-4xl font-bold flex items-center justify-center shadow-md">
+      <span th:text="${student.name.charAt(0)}">J</span>
+    </div>
+    <h2 class="mt-4 text-2xl font-bold text-gray-800 tracking-wide">
+      <span th:text="${student.name}">John Doe</span>
+    </h2>
+    <p class="text-sm text-gray-500 font-medium mt-1">Student Profile</p>
+  </div>
+
+  <!-- Info Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 text-base">
+    <div class="flex justify-between border-b pb-2">
+      <span class="font-medium">Course</span>
+      <span th:text="${student.course}">B.Tech</span>
+    </div>
+    <div class="flex justify-between border-b pb-2">
+      <span class="font-medium">Branch</span>
+      <span th:text="${student.branch}">Computer Science</span>
+    </div>
+    <div class="flex justify-between border-b pb-2">
+      <span class="font-medium">Roll Number</span>
+      <span th:text="${student.rollNumber}">CS1234</span>
+    </div>
+    <div class="flex justify-between border-b pb-2">
+      <span class="font-medium">Status</span>
+      <span class="text-green-600 font-semibold">Active</span>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="mt-10 text-center">
+    <a th:href="@{/student/dashboard}"
+       class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 py-2 rounded-md transition">
+      ← Back to Dashboard
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
