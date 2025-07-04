@@ -60,23 +60,3 @@ spring.datasource.password=Ashwani@12
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 
-
-
-##
-✅ Future Improvements
-Email notifications for dues updates
-
-PDF report generation
-
-Multi-role access for faculty
-
-Mobile-responsive UI
-
-Role-based access control with Spring Security
-
-🙋 Author
-Ashwani Prajapati
-Email: prajapatiashwani62@gmail.com
-Phone: +91 8815169427
-GitHub: ashwaniprajapati049
-
