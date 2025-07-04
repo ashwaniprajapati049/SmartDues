@@ -32,4 +32,47 @@ SmartDues is a web-based No-Dues Management System designed for colleges to stre
 ---
 
 ## 📁 Folder Structure (Spring Boot)
+SmartDuesPortal/
+├── src/
+│ ├── main/
+│ │ ├── java/com/smartdues/
+│ │ │ ├── controller/
+│ │ │ ├── entity/
+│ │ │ ├── repository/
+│ │ │ ├── service/
+│ │ │ └── SmartDuesPortalApplication.java
+│ │ └── resources/
+│ │ ├── application.properties
+│ │ └── static/templates/
+├── pom.xml
+└── README.md
+
+
+---
+
+## ⚙️ Configuration
+
+### `application.properties`
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/smartdues_db
+spring.datasource.username=root
+spring.datasource.password=Ashwani@12
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+✅ Future Improvements
+Email notifications for dues updates
+
+PDF report generation
+
+Multi-role access for faculty
+
+Mobile-responsive UI
+
+Role-based access control with Spring Security
+
+🙋 Author
+Ashwani Prajapati
+Email: prajapatiashwani62@gmail.com
+Phone: +91 8815169427
+GitHub: ashwaniprajapati049
 
